@@ -4,7 +4,10 @@ const Navbar = () => {
     const navOptions = (
         <>
             <li>
-                <NavLink>Item 1</NavLink>
+                <NavLink to="/">Home</NavLink>
+            </li>
+            <li>
+                <NavLink to="/menu">Menu</NavLink>
             </li>
         </>
     );
