@@ -1,5 +1,5 @@
-const MenuItems = ({ menu }) => {
-    const { name, image, price, recipe } = menu;
+const MenuItems = ({ item }) => {
+    const { name, image, price, recipe } = item;
     return (
         <div className="flex items-center gap-3">
             <img className="w-24 rounded-full" src={image} alt="" />

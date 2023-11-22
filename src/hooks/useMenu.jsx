@@ -5,13 +5,10 @@ const useMenu = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch("menu.json")
+        fetch("../../public/menu.json")
             .then((res) => res.json())
             .then((data) => {
-                const popularItem = data.filter(
-                    (item) => item.category === "popular"
-                );
-                setMenus(popularItem);
+                setMenus(data);
                 setLoading(false);
             });
     }, []);

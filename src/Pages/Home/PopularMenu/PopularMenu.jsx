@@ -13,8 +13,8 @@ const PopularMenu = () => {
                 subHeading="From Our Menu"
             ></SectionHeading>
             <div className="grid grid-cols-2 gap-5">
-                {popular.map((item) => (
-                    <MenuItems key={item._id} menu={menu}></MenuItems>
+                {popular.map((item, idx) => (
+                    <MenuItems key={idx} item={item}></MenuItems>
                 ))}
             </div>
         </div>

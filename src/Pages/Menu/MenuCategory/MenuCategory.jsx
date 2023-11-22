@@ -1,9 +1,13 @@
-const MenuCategory = () => {
-    return (
-        <div>
+// import MenuItems from "../../../Components/MenuItems/MenuItems";
 
-        </div>
-    );
-};
+// const MenuCategory = ({menu}) => {
+//     return (
+//         <div>
+//             {menu.map((item) => (
+//                 <MenuItems  key={item._id} item={item}></MenuItems>
+//             ))}
+//         </div>
+//     );
+// };
 
-export default MenuCategory;
+// export default MenuCategory;
