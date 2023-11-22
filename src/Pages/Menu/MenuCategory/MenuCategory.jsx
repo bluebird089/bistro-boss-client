@@ -1,13 +1,13 @@
-// import MenuItems from "../../../Components/MenuItems/MenuItems";
+import MenuItems from "../../../Components/MenuItems/MenuItems";
 
-// const MenuCategory = ({menu}) => {
-//     return (
-//         <div>
-//             {menu.map((item) => (
-//                 <MenuItems  key={item._id} item={item}></MenuItems>
-//             ))}
-//         </div>
-//     );
-// };
+const MenuCategory = ({ item }) => {
+    return (
+        <div className="grid grid-cols-2 gap-5">
+            {item.map((item, idx) => (
+                <MenuItems key={idx} item={item}></MenuItems>
+            ))}
+        </div>
+    );
+};
 
-// export default MenuCategory;
+export default MenuCategory;
