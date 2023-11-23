@@ -8,6 +8,7 @@ import SoupBg from "../../assets/menu/soup-bg.jpg";
 import useMenu from "../../hooks/useMenu";
 import SectionHeading from "../../Components/SectionHeading/SectionHeading";
 import MenuCategory from "./MenuCategory/MenuCategory";
+import "./Menu.css"
 
 const Menu = () => {
     const [menu] = useMenu();
@@ -27,15 +28,15 @@ const Menu = () => {
                 subHeading="Don't miss"
                 heading="Todays Offers"
             ></SectionHeading>
-            <MenuCategory item={offered}></MenuCategory>
+            <MenuCategory category="pizza" item={offered}></MenuCategory>
             <Cover img={DesertBg} title="Deserts"></Cover>
-            <MenuCategory item={dessert}></MenuCategory>
+            <MenuCategory category="dessert" item={dessert}></MenuCategory>
             <Cover img={PizzaBg} title="Pizzas"></Cover>
-            <MenuCategory item={pizza}></MenuCategory>
+            <MenuCategory category="pizza" item={pizza}></MenuCategory>
             <Cover img={SaladBg} title="Salad"></Cover>
-            <MenuCategory item={salad}></MenuCategory>
+            <MenuCategory category="salad" item={salad}></MenuCategory>
             <Cover img={SoupBg} title="Soup"></Cover>
-            <MenuCategory item={soup}></MenuCategory>
+            <MenuCategory category="soup" item={soup}></MenuCategory>
         </div>
     );
 };

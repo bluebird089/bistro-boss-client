@@ -1,0 +1,3 @@
+.react-tabs__tab--selected{
+    @apply text-yellow-500
+}
