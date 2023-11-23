@@ -5,6 +5,7 @@ import { useState } from "react";
 import useMenu from "../../hooks/useMenu";
 import OrderTab from "../../Components/OrderTab/OrderTab";
 import { useParams } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const Order = () => {
     const categories = ["salad", "pizza", "soup", "deserts", "drinks"];
@@ -20,6 +21,9 @@ const Order = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Bistro Boss | Order Food</title>
+            </Helmet>
             <Cover img={OrderCover} title="Order Food"></Cover>
             <Tabs
                 defaultIndex={tabIndex}
