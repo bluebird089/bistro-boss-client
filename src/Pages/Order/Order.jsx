@@ -29,7 +29,7 @@ const Order = () => {
                 defaultIndex={tabIndex}
                 onSelect={(index) => setTabIndex(index)}
             >
-                <TabList className="flex gap-5">
+                <TabList className="flex justify-center gap-5 my-5">
                     <Tab>
                         <button>Salad</button>
                     </Tab>
