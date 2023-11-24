@@ -28,10 +28,10 @@ const Navbar = () => {
                 <NavLink to="/order/salad">Order</NavLink>
             </li>
             <li>
-                <button className="btn btn-sm">
+                <NavLink to="/dashboard/cart" className="btn btn-sm">
                     <FaShoppingCart className="text-white" />
                     <div className="badge badge-secondary">+{cart?.length}</div>
-                </button>
+                </NavLink>
             </li>
             {user ? (
                 <>
