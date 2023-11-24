@@ -6,22 +6,30 @@ import { AuthContext } from "../../provider/AuthProvider";
 import Swal from "sweetalert2";
 
 const SignUp = () => {
-    const { createUser } = useContext(AuthContext);
+    const { createUser, updateUser } = useContext(AuthContext);
     const {
         register,
         handleSubmit,
+        reset,
         formState: { errors },
     } = useForm();
     const onSubmit = (data) => {
+        console.log(data);
         createUser(data.email, data.password).then((result) => {
             const user = result.user;
-            if (user) {
-                Swal.fire({
-                    title: "Success",
-                    text: "Signed Up Successfully",
-                    icon: "success",
+            console.log(user);
+            updateUser(data.name, data.photoURL)
+                .then(() => {
+                    Swal.fire({
+                        title: "Success",
+                        text: "Signed Up Successfully",
+                        icon: "success",
+                    });
+                    reset();
+                })
+                .catch((error) => {
+                    console.log(error);
                 });
-            }
         });
     };
 
@@ -56,6 +64,22 @@ const SignUp = () => {
                                 className="input input-bordered"
                             />
                             {errors.name && (
+                                <span className="text-red-500">
+                                    This field is required
+                                </span>
+                            )}
+                        </div>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Photo URL</span>
+                            </label>
+                            <input
+                                type="text"
+                                {...register("photoURL", { required: true })}
+                                placeholder="Type Your Photo URL"
+                                className="input input-bordered"
+                            />
+                            {errors.photoURL && (
                                 <span className="text-red-500">
                                     This field is required
                                 </span>
