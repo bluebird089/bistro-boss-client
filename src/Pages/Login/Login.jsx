@@ -6,12 +6,18 @@ import {
 } from "react-simple-captcha";
 import { AuthContext } from "../../provider/AuthProvider";
 import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const Login = () => {
     const [disabled, setDisabled] = useState(true);
     const { logInUser } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    console.log(location);
+
+    const from = location?.state?.form?.pathname || "/";
 
     useEffect(() => {
         loadCaptchaEnginge(6);
@@ -31,6 +37,7 @@ const Login = () => {
                     icon: "success",
                 });
             }
+            navigate(from, { replace: true });
         });
     };
 
@@ -121,7 +128,12 @@ const Login = () => {
                         <div className="text-center mt-5">
                             <p>
                                 Are You New Here? Please{" "}
-                                <Link className="text-yellow-500 hover:underline" to="/signup">Sign Up</Link>
+                                <Link
+                                    className="text-yellow-500 hover:underline"
+                                    to="/signup"
+                                >
+                                    Sign Up
+                                </Link>
                             </p>
                         </div>
                     </form>
