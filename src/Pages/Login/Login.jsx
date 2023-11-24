@@ -7,6 +7,7 @@ import {
 import { AuthContext } from "../../provider/AuthProvider";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Login = () => {
     const [disabled, setDisabled] = useState(true);
@@ -23,7 +24,13 @@ const Login = () => {
         const password = form.password.value;
         logInUser(email, password).then((result) => {
             const user = result.user;
-            console.log(user);
+            if (user) {
+                Swal.fire({
+                    title: "Success",
+                    text: "Logged In Successfully",
+                    icon: "success",
+                });
+            }
         });
     };
 
