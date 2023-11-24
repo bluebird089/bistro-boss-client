@@ -5,6 +5,8 @@ import {
     validateCaptcha,
 } from "react-simple-captcha";
 import { AuthContext } from "../../provider/AuthProvider";
+import { Helmet } from "react-helmet-async";
+import { Link } from "react-router-dom";
 
 const Login = () => {
     const [disabled, setDisabled] = useState(true);
@@ -35,6 +37,9 @@ const Login = () => {
     };
     return (
         <div className="hero min-h-screen bg-base-200">
+            <Helmet>
+                <title>Bistro Boss | Log In</title>
+            </Helmet>
             <div className="hero-content flex-col lg:flex-row-reverse">
                 <div className="text-center lg:text-left">
                     <h1 className="text-5xl font-bold">Login now!</h1>
@@ -105,6 +110,12 @@ const Login = () => {
                                 type="submit"
                                 value="Log In"
                             />
+                        </div>
+                        <div className="text-center mt-5">
+                            <p>
+                                Are You New Here? Please{" "}
+                                <Link className="text-yellow-500 hover:underline" to="/signup">Sign Up</Link>
+                            </p>
                         </div>
                     </form>
                 </div>
