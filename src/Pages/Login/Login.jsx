@@ -8,14 +8,13 @@ import { AuthContext } from "../../provider/AuthProvider";
 import { Helmet } from "react-helmet-async";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import SocialLogin from "../../Components/SocialLogin/SocialLogin";
 
 const Login = () => {
     const [disabled, setDisabled] = useState(true);
     const { logInUser } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
-
-    console.log(location);
 
     const from = location?.state?.form?.pathname || "/";
 
@@ -124,6 +123,9 @@ const Login = () => {
                                 type="submit"
                                 value="Log In"
                             />
+                        </div>
+                        <div className="form-control mt-6">
+                            <SocialLogin></SocialLogin>
                         </div>
                         <div className="text-center mt-5">
                             <p>
