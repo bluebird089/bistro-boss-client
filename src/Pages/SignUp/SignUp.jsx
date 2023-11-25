@@ -1,12 +1,15 @@
 import { useContext } from "react";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import Swal from "sweetalert2";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const SignUp = () => {
     const { createUser, updateUser } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const axiosPublic = useAxiosPublic();
     const {
         register,
         handleSubmit,
@@ -20,12 +23,22 @@ const SignUp = () => {
             console.log(user);
             updateUser(data.name, data.photoURL)
                 .then(() => {
-                    Swal.fire({
-                        title: "Success",
-                        text: "Signed Up Successfully",
-                        icon: "success",
+                    const userInfo = {
+                        userName: data.name,
+                        userEmail: data.email,
+                    };
+                    axiosPublic.post("/users", userInfo).then((res) => {
+                        if (res.data.insertedId) {
+                            console.log("user added to the database")
+                            reset();
+                            Swal.fire({
+                                title: "Success",
+                                text: "Signed Up Successfully",
+                                icon: "success",
+                            });
+                            navigate("/");
+                        }
                     });
-                    reset();
                 })
                 .catch((error) => {
                     console.log(error);
