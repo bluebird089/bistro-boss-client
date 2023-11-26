@@ -9,12 +9,14 @@ import { Helmet } from "react-helmet-async";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import SocialLogin from "../../Components/SocialLogin/SocialLogin";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const Login = () => {
     const [disabled, setDisabled] = useState(true);
     const { logInUser } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
+    const axiosPublic = useAxiosPublic();
 
     const from = location?.state?.form?.pathname || "/";
 
@@ -35,8 +37,15 @@ const Login = () => {
                     text: "Logged In Successfully",
                     icon: "success",
                 });
+                const userInfo = {
+                    email: user?.email,
+                    name: user?.displayName,
+                };
+                axiosPublic.post("/users", userInfo).then((res) => {
+                    console.log(res.data);
+                });
+                navigate(from, { replace: true });
             }
-            navigate(from, { replace: true });
         });
     };
 
